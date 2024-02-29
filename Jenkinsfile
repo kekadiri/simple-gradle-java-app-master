@@ -19,6 +19,7 @@ pipeline {
                       reportTitles: '', 
                       useWrapperFileDirectly: true])
                 }
+      }
     }
   }
 }
