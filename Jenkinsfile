@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('test') {
       steps {
-        sh 'gradle clean test'
+        bat 'gradle clean test'
       }
       post {                
                 // If Gradle was able to run the tests, even if some of the test
