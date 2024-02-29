@@ -1,5 +1,5 @@
 node {
   withGradle {
-    sh './gradle build'
+    sh 'gradle build'
   }
 }
