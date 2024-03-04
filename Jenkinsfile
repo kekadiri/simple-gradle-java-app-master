@@ -27,7 +27,7 @@ pipeline {
 
         stage('Static Code Analysis') {
             steps {
-                withSonarQubeEnv('SonarQube') {
+                withSonarQubeEnv('sonarqube') {
                     script {
                         // Run SonarQube analysis
                         sh 'gradle sonarqube'
