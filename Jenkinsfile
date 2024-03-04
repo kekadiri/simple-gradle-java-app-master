@@ -1,38 +1,21 @@
 pipeline {
     agent any
-    tools {    
- // Define Gradle tool with specific version       
-      gradle 'Gradle'        
- // Define JDK tool with specific version        
-   //   jdk 'Java'     
- }
-    
-   environment {
-        SONARQUBE_SERVER = credentials('sonarqube')
-      //  NEXUS_CREDENTIALS = credentials('nexus-Repo')
-    }
-
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
+    tools {
+    // Define Gradle tool with specific version
+    gradle 'Gradle'
+}
+ 
+stages {
+    stage('Build') {
+        steps {
+            script {
+                // Encourage use of Java 17 (may not guarantee it)
+                jdk 'java17'
+                sh 'gradle -v'
+                sh 'java --version'
+                sh './gradlew clean build'
             }
         }
-
-        stage('Build') {
-            steps {
-                script {
-                    sh 'gradle -v'
-                    sh 'java --version'
-                    // Build your Gradle project here
-                    jdk 'java17'
-                    sh './gradlew clean build'
-                }
-            }
-        }
-
-       
     }
-
-    
+}
 }
