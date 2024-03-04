@@ -4,7 +4,7 @@ pipeline {
  // Define Gradle tool with specific version       
       gradle 'Gradle'        
  // Define JDK tool with specific version        
-      jdk 'Java'     
+   //   jdk 'Java'     
  }
     
    environment {
