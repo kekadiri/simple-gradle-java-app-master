@@ -1,21 +1,22 @@
 pipeline {
     agent any
-tools {
-    // Define Gradle tool with specific version
-    gradle 'Gradle'
-    // Define JDK tool with specific version
-    jdk 'java17' // Assuming Java 17 is now available in Jenkins
-}
-
-stages {
-    stage('Build') {
-        steps {
-            script {
-                sh 'gradle -v'
-                sh 'java --version'
-                sh './gradle clean build' // Use './gradlew' if wrapper is at root
+ 
+    tools {
+        // Define Gradle tool with specific version
+        gradle 'Gradle'
+        // Define JDK tool with specific version
+        jdk 'java17' // Assuming Java 17 is now available in Jenkins
+    }
+ 
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    sh 'gradle -v'
+                    sh 'java --version'
+                    sh './gradlew clean build' // Use './gradlew' if wrapper is at root
+                }
             }
         }
     }
-}
 }
