@@ -1,5 +1,5 @@
 pipeline {
-    agents any
+    agent any
 tools {
     // Define Gradle tool with specific version
     gradle 'Gradle'
