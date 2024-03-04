@@ -17,6 +17,7 @@ pipeline {
             steps {
                 script {
                     // Build your Gradle project here
+                    jdk 'java17'
                     sh './gradlew clean build'
                 }
             }
