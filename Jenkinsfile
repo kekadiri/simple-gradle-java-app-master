@@ -14,7 +14,7 @@ pipeline {
                 script {
                     sh 'gradle -v'
                     sh 'java --version'
-                    sh './gradlew clean build' // Use './gradlew' if wrapper is at root
+                    sh 'gradle clean build' // Use './gradlew' if wrapper is at root
                 }
             }
         }
