@@ -1,22 +1,52 @@
 pipeline {
     agent any
- 
-    tools {
-        // Define Gradle tool with specific version
-        gradle 'Gradle'
-        // Define JDK tool with specific version
-        // jdk 'java17' // Assuming Java 17 is now available in Jenkins
+	tools {
+	  gradle 'Gradle'
+	  }
+
+    environment {
+        SONARQUBE_SERVER = credentials('sonarqube')
+       // NEXUS_CREDENTIALS = credentials('nexus-credentials')
     }
- 
+
     stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
         stage('Build') {
             steps {
                 script {
-                    sh 'gradle -v'
-                    sh 'java --version'
-                    sh 'gradle clean build' // Use './gradlew' if wrapper is at root
+                    // Build your Gradle project here
+                    sh 'gradle clean build'
                 }
             }
         }
+
+        stage('Static Code Analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    script {
+                        // Run SonarQube analysis
+                        sh 'gradle sonarqube'
+                    }
+                }
+            }
+        }
+
+        //stage('Deploy to Nexus') {
+          //  steps {
+            //    withCredentials([usernamePassword(credentialsId: 'nexus-Repo', usernameVariable: 'admin', passwordVariable: 'password')]) {
+              //      script {
+                        // Deploy artifacts to Nexus
+                //        sh 'gradle publish -PnexusUsername=${admin} -PnexusPassword=${password}'
+                  //  }
+                //}
+            //}
+        //}
     }
+
+    
 }
