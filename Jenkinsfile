@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     // Build your Gradle project here
-                    sh './gradle clean build'
+                    sh './gradlew clean build'
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
                 withSonarQubeEnv('SonarQube') {
                     script {
                         // Run SonarQube analysis
-                        sh './gradle sonarqube'
+                        sh './gradlew sonarqube'
                     }
                 }
             }
@@ -38,7 +38,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'nexus-Repo', usernameVariable: 'admin', passwordVariable: 'password')]) {
                     script {
                         // Deploy artifacts to Nexus
-                        sh './gradle publish -PnexusUsername=${admin} -PnexusPassword=${password}'
+                        sh './gradlew publish -PnexusUsername=${admin} -PnexusPassword=${password}'
                     }
                 }
             }
