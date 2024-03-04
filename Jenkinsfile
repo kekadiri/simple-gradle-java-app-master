@@ -1,7 +1,13 @@
 pipeline {
     agent any
-
-    environment {
+    tools {    
+ // Define Gradle tool with specific version       
+      gradle 'Gradle-7.3'        
+ // Define JDK tool with specific version        
+      jdk 'jdk17'     
+ }
+    
+   environment {
         SONARQUBE_SERVER = credentials('sonarqube')
       //  NEXUS_CREDENTIALS = credentials('nexus-Repo')
     }
