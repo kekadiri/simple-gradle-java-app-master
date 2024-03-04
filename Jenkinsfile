@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        SONARQUBE_SERVER = credentials('sonarqube-server')
-        NEXUS_CREDENTIALS = credentials('nexus-credentials')
+        SONARQUBE_SERVER = credentials('sonarqube')
+        NEXUS_CREDENTIALS = credentials('nexus-Repo')
     }
 
     stages {
