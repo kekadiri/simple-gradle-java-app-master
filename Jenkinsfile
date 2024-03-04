@@ -22,27 +22,7 @@ pipeline {
             }
         }
 
-        stage('Static Code Analysis') {
-            steps {
-                withSonarQubeEnv('SonarQube') {
-                    script {
-                        // Run SonarQube analysis
-                        sh './gradlew sonarqube'
-                    }
-                }
-            }
-        }
-
-        stage('Deploy to Nexus') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'nexus-Repo', usernameVariable: 'admin', passwordVariable: 'password')]) {
-                    script {
-                        // Deploy artifacts to Nexus
-                        sh './gradlew publish -PnexusUsername=${admin} -PnexusPassword=${password}'
-                    }
-                }
-            }
-        }
+       
     }
 
     
