@@ -2,9 +2,9 @@ pipeline {
     agent any
     tools {    
  // Define Gradle tool with specific version       
-      gradle 'Gradle-7.3'        
+      gradle 'Gradle'        
  // Define JDK tool with specific version        
-      jdk 'jdk17'     
+      jdk 'Java'     
  }
     
    environment {
