@@ -5,7 +5,7 @@ pipeline {
         // Define Gradle tool with specific version
         gradle 'Gradle'
         // Define JDK tool with specific version
-        jdk 'java17' // Assuming Java 17 is now available in Jenkins
+        // jdk 'java17' // Assuming Java 17 is now available in Jenkins
     }
  
     stages {
