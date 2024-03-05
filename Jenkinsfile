@@ -25,7 +25,7 @@ pipeline {
             }
         }
 
-        stage('Static Code Analysis') {
+        stage('Sonar Quality Check') {
             steps {
                 withSonarQubeEnv('sonarqube') {
                     script {
