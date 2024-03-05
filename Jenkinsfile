@@ -27,8 +27,8 @@ pipeline {
 
         stage('Sonar Quality Check') {
             steps {
-                withSonarQubeEnv('sonarqube') {
-                    script {
+                script {
+			 withSonarQubeEnv('sonarqube') {
                         // Run SonarQube analysis
                         sh 'gradle sonarqube'
                     }
