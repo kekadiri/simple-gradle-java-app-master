@@ -4,10 +4,10 @@ pipeline {
 	  gradle 'Gradle'
 	  }
 
-    environment {
-        SONARQUBE_SERVER = credentials('sonarqube')
+   // environment {
+     //   SONARQUBE_SERVER = credentials('sonarqube')
        // NEXUS_CREDENTIALS = credentials('nexus-credentials')
-    }
+    //}
 
     stages {
         stage('Checkout') {
