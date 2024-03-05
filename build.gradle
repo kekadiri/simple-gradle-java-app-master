@@ -12,6 +12,7 @@ plugins {
 
     // Apply the application plugin to add support for building a CLI application.
     id 'application'
+    id "org.sonarqube" version "3.3"
 }
 
 repositories {
@@ -48,5 +49,17 @@ task projectupper {
         String projectName = project.name
         println "Project Name: $projectName"
         println "Upper case: ${projectName.toUpperCase()}"
+    }
+}
+sonarqube {
+    properties {
+        // SonarQube server URL
+        property "sonar.host.url", "http://18.212.145.70:9000"
+        
+        // Project identification
+        property "sonar.projectKey", "squ_5932d91a2f715ed4be0a47825949a98573773404"
+        property "sonar.projectName", "simple-gradle-java-app"
+        property "sonar.projectVersion", "1.0"
+
     }
 }
