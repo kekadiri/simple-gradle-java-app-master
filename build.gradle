@@ -54,7 +54,7 @@ task projectupper {
 sonarqube {
     properties {
         // SonarQube server URL
-        property "sonar.host.url", "http://18.212.145.70:9000"
+        property "sonar.host.url", "http://3.80.185.82:9000"
         
         // Project identification
         property "sonar.projectKey", "squ_5932d91a2f715ed4be0a47825949a98573773404"
