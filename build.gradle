@@ -85,8 +85,8 @@ publishing {
             // Configure the URL of your Nexus repository
             url 'http://54.157.21.144:8081/repository/maven-releases/'
             credentials {
-                username = project.findProperty('admin') ?: System.getenv('admin')
-                password = project.findProperty('password') ?: System.getenv('password')
+                username = project.findProperty('admin') 
+                password = project.findProperty('password') 
             }
         }
     }
