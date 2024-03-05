@@ -13,12 +13,17 @@ plugins {
     // Apply the application plugin to add support for building a CLI application.
     id 'application'
     id "org.sonarqube" version "3.3"
-}
+    id 'java'
+    id 'maven-publish'
+
+group = 'org.gradle-java-app'
+version = '1.0.0'
 
 repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+    mavenCentral()
 }
 
 dependencies {
@@ -61,5 +66,28 @@ sonarqube {
         property "sonar.projectName", "simple-gradle-java-app"
         property "sonar.projectVersion", "1.0"
 
+    }
+}
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            // Optional: Configure the publication metadata
+            groupId = 'org.gradle-java-app'
+            artifactId = 'simple-gradle-java-app.zip'
+            version = '1.0.0'
+        }
+    }
+
+    repositories {
+        maven {
+            // Configure the URL of your Nexus repository
+            url 'http://54.157.21.144:8081/repository/maven-releases/'
+            credentials {
+                username = project.findProperty('admin') ?: System.getenv('admin')
+                password = project.findProperty('password') ?: System.getenv('password')
+            }
+        }
     }
 }
